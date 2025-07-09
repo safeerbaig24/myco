@@ -102,7 +102,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
   return (
     <nav className={`bg-white sticky top-0 z-50`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+      <div className="lg:px-[160px] px-4 pt-8">
         <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
           {/* Logo */}
           <Link

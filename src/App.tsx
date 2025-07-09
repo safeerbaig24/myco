@@ -8,7 +8,7 @@ import InstallModal from "./component/InstallModal";
 
 function App() {
   return (
-    <>
+    <div style={{ fontFamily: '"SF Pro Display", sans-serif' }}>
       <InstallModal />
       <Navbar />
       <Routes>
@@ -20,7 +20,7 @@ function App() {
         />
         <Route path="/settings" element={<SettingsPage />} />
       </Routes>
-    </>
+    </div>
   );
 }
 
