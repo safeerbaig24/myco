@@ -29,6 +29,10 @@ interface Product {
     capacity?: string;
     type?: string;
   };
+  features: {
+    title: string;
+    bullet: string[];
+  };
   documentation: {
     datasheet?: boolean;
     video?: boolean;
@@ -95,6 +99,15 @@ const productData: Record<string, Product[]> = {
         graduation: "0.1mL",
         sterility: "Sterile, Single Use",
       },
+      features: {
+        title: "Features and Benefits",
+        bullet: [
+          "Computerized grinding ensures sharp, consistent, high-quality needles",
+          "Exact fit between stylet and cannula bevel to minimize coring and trauma",
+          "Large, clear hubs for enhanced tactile feel and visualization of CSF ",
+          "Smooth insertion resistance provides for easy identification of tissue layers",
+        ],
+      },
       documentation: {
         datasheet: true,
         video: true,
@@ -115,6 +128,15 @@ const productData: Record<string, Product[]> = {
         graduation: "0.01mL",
         sterility: "Sterile, Single Use",
       },
+      features: {
+        title: "Features and Benefits",
+        bullet: [
+          "Computerized grinding ensures sharp, consistent, high-quality needles",
+          "Exact fit between stylet and cannula bevel to minimize coring and trauma",
+          "Large, clear hubs for enhanced tactile feel and visualization of CSF ",
+          "Smooth insertion resistance provides for easy identification of tissue layers",
+        ],
+      },
       documentation: {
         datasheet: true,
         video: false,
@@ -134,6 +156,15 @@ const productData: Record<string, Product[]> = {
         material: "Medical Grade Plastic",
         graduation: "0.1mL",
         sterility: "Sterile, Single Use",
+      },
+      features: {
+        title: "Features and Benefits",
+        bullet: [
+          "Computerized grinding ensures sharp, consistent, high-quality needles",
+          "Exact fit between stylet and cannula bevel to minimize coring and trauma",
+          "Large, clear hubs for enhanced tactile feel and visualization of CSF ",
+          "Smooth insertion resistance provides for easy identification of tissue layers",
+        ],
       },
       documentation: {
         datasheet: true,
@@ -201,7 +232,7 @@ export default function ProductDetailPage({
       <div className="px-6 lg:px-[160px]">
         {/* Breadcrumb */}
         <div className="py-8">
-          <div className="flex items-center text-lg">
+          <div className="flex items-center md:text-lg">
             <Link href="/" className="text-[#48484859]">
               Home
             </Link>
@@ -210,7 +241,9 @@ export default function ProductDetailPage({
               {category.displayName}
             </Link>
             <ChevronRight className="w-4 h-4 mx-2" color="#48484859" />
-            <span className="text-[#005F9E] font-medium">{product.name}</span>
+            <span className="text-[#005F9E] text-base font-medium">
+              {product.name}
+            </span>
           </div>
         </div>
 
@@ -240,11 +273,11 @@ export default function ProductDetailPage({
             </div>
 
             {/* Main Image */}
-            <div className="bg-white w-full rounded-lg">
+            <div className="bg-white w-full rounded-lg h-[500px]">
               <img
                 src={product.images[selectedImage] || "/product.png"}
                 alt={product.name}
-                className="w-full h-full object-cover rounded-2xl"
+                className="object-cover w-full h-full aspect-square rounded-2xl"
               />
             </div>
           </div>
@@ -261,6 +294,28 @@ export default function ProductDetailPage({
               <p className="text-[#808080] text-lg leading-relaxed">
                 {product.description}
               </p>
+            </div>
+
+            {/* Features */}
+
+            <div className="rounded-2xl">
+              <h2 className="text-xl font-medium text-[#005F9E] mb-3">
+                {product?.features?.title}
+              </h2>
+              <div>
+                <ul className="list-disc pl-5">
+                  {Object.entries(product.features?.bullet).map(
+                    ([key, value]) => (
+                      <li
+                        key={key}
+                        className="text-[#484848] text-lg font-medium"
+                      >
+                        {value}
+                      </li>
+                    )
+                  )}
+                </ul>
+              </div>
             </div>
 
             {/* Technical Specifications */}
@@ -443,13 +498,13 @@ export default function ProductDetailPage({
               Enter your email address to receive the complete datasheet and
               technical documentation for this product.
             </p>
-            <div className="flex gap-4 max-w-md mx-auto ">
+            <div className="flex flex-col md:flex-row gap-4 max-w-md mx-auto ">
               <Input
                 type="email"
                 placeholder="Enter your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-white rounded-lg text-center placeholder:text-center"
+                className="flex-1 bg-white border-none rounded-lg text-center pt-3 placeholder:text-center"
               />
               <Button
                 onPress={handleSendDocuments}

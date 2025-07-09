@@ -175,12 +175,12 @@ export default function ProductListingPage({
           <div className="flex items-center text-sm text-gray-500">
             <button
               onClick={() => navigate("/")}
-              className="text-lg font-medium cursor-pointer"
+              className="md:text-lg font-medium cursor-pointer"
             >
               Home
             </button>
             <ChevronRight className="w-5 h-5 mx-2" />
-            <span className="text-[#005F9E] text-lg font-medium">
+            <span className="text-[#005F9E] md:text-lg font-medium">
               {category.name}
             </span>
           </div>
