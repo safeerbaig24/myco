@@ -3,7 +3,6 @@ import type React from "react";
 import { useState, useEffect } from "react";
 import WheelContainer from "./WheelContainer";
 import { categories, type Category, getDimensions } from "../ulits/staticData";
-import { Image } from "@heroui/react";
 
 export default function RadialProductWheel() {
   const [rotation, setRotation] = useState(0);
@@ -163,7 +162,7 @@ export default function RadialProductWheel() {
                 backgroundPosition: "center",
               }}
             >
-              <Image
+              <img
                 src={"/Logo.png"}
                 alt="logo"
                 className="w-14 h-14 lg:w-[150px] lg:h-[100px]"
