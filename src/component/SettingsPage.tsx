@@ -1,13 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  ArrowBigDown,
-  ArrowDown,
-  ArrowDown01Icon,
-  ArrowDownAZ,
-  ArrowDownIcon,
-  Eye,
-  EyeOff,
-} from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { Card, CardBody } from "@heroui/react";
 import { useNavigate } from "react-router-dom";
 
