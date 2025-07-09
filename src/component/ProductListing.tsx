@@ -239,7 +239,7 @@ export default function ProductListingPage({
                     <Button
                       size="sm"
                       variant="ghost"
-                      className="ml-2 p-1 text-gray-400 hover:text-gray-600 flex-shrink-0"
+                      className="ml-2 p-1 text-gray-400 hover:text-gray-600 flex-shrink-0 cursor-pointer"
                     >
                       <ExternalLink className="w-5 h-5" />
                     </Button>
