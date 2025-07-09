@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Home, Settings, Menu, X } from "lucide-react";
-import { Button, Image, Link } from "@heroui/react";
+import { Button, Link } from "@heroui/react";
 import { useLocation } from "react-router-dom";
 
 interface NavbarProps {
@@ -106,7 +106,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
         <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center w-[150px] h-[80px]">
-            <Image src={"/Logo.png"} alt="logo" />
+            <img src={"/Logo.png"} alt="logo" />
           </Link>
 
           {/* Desktop Navigation */}
