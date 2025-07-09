@@ -1,7 +1,7 @@
-"use client";
 import { useState, useEffect } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Card, CardBody } from "@heroui/react";
+import { useNavigate } from "react-router-dom";
 
 interface Category {
   id: string;
@@ -71,14 +71,17 @@ export const updatedCategories: Category[] = [
 ];
 
 export default function SettingsPage() {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState<Category[]>(updatedCategories);
+  const [password, setPassword] = useState<string>(""); // For password input
+  const [isPasswordCorrect, setIsPasswordCorrect] = useState<boolean>(false); // To track password status // Show password modal on first load
 
   useEffect(() => {
     const data = localStorage.getItem("categorySettings");
     if (data) {
       setCategories(JSON.parse(data));
     }
-  }, [categories]);
+  }, []);
 
   const toggleCategory = (categoryId: string) => {
     const index = categories.findIndex(
@@ -89,6 +92,48 @@ export default function SettingsPage() {
     localStorage.setItem("categorySettings", JSON.stringify(categories));
     setCategories(categories);
   };
+
+  const handlePasswordSubmit = () => {
+    const correctPassword = "yourPassword"; // Replace with your actual password
+    if (password === correctPassword) {
+      setIsPasswordCorrect(true);
+    } else {
+      alert("Incorrect password. Please try again.");
+    }
+  };
+
+  if (!isPasswordCorrect) {
+    return (
+      <div className="fixed inset-0 flex justify-center items-center bg-gray-200 bg-opacity-50">
+        <div className="bg-white py-12 px-[28px] rounded-lg shadow-md max-w-sm w-full relative">
+          <img
+            src="/cross.png"
+            alt="cross"
+            width={10}
+            height={10}
+            className="absolute right-[28px] top-5 cursor-pointer"
+            onClick={() => navigate("/")}
+          />
+          <h2 className="text-base text-[#484848] font-semibold mb-2">
+            Password
+          </h2>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            className="w-full p-2 mb-4 border border-[#48484833] rounded-md placeholder:text-[#48484833] placeholder:text-sm"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            onClick={handlePasswordSubmit}
+            className="w-full bg-[#005F9E] text-white p-2 text-base font-medium rounded-md"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
