@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Home, Settings, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button, Link } from "@heroui/react";
 import { useLocation } from "react-router-dom";
 
@@ -110,39 +110,33 @@ export default function Navbar({ currentPage }: NavbarProps) {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center justify-between space-x-4">
+          <div className="hidden md:flex items-center justify-between">
             <Link href="/">
               <Button
                 variant={activePage === "home" ? "solid" : "ghost"}
                 size={buttonSize}
-                className={`flex items-center w-full justify-between gap-2 transition-all cursor-pointer ${
+                className={`flex items-center w-full justify-between gap-2 transition-all cursor-pointer font-medium ${
                   activePage === "home"
-                    ? "bg-[#005F9E] text-white rounded-lg font-medium"
+                    ? "bg-[#005F9E] text-white rounded-lg"
                     : "bg-transparent text-[#005F9E] border-blue-200"
                 }`}
               >
-                <Home
-                  className={`${screenSize === "tv" ? "w-5 h-5" : "w-4 h-4"}`}
-                />
-                Home
+                <img src="/home.png" alt="setting" width={24} height={24} />
+                <span>Home</span>
               </Button>
             </Link>
             <Link href="/settings">
               <Button
                 variant={activePage === "settings" ? "solid" : "ghost"}
                 size={buttonSize}
-                className={`flex items-center gap-2 transition-all cursor-pointer ${
+                className={`flex items-center gap-2 transition-all cursor-pointer font-medium ${
                   activePage === "settings"
-                    ? "bg-[#005F9E] text-white rounded-lg font-medium"
+                    ? "bg-[#005F9E] text-white rounded-lg"
                     : "bg-transparent text-[#005F9E] border-blue-200"
                 }`}
               >
-                <Settings
-                  className={`right-0 ${
-                    screenSize === "tv" ? "w-5 h-5" : "w-4 h-4"
-                  }`}
-                />
-                Settings
+                <img src="/setting.png" alt="setting" width={24} height={24} />
+                <span>Settings</span>
               </Button>
             </Link>
           </div>
@@ -174,28 +168,33 @@ export default function Navbar({ currentPage }: NavbarProps) {
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button
                   variant={activePage === "home" ? "solid" : "ghost"}
-                  className={`w-full flex justify-center py-6 gap-3 transition-all cursor-pointer ${
+                  className={`w-full flex justify-center py-6 gap-3 transition-all font-medium cursor-pointer ${
                     activePage === "home"
                       ? "bg-[#005F9E] hover:bg-blue-700 text-white"
                       : "text-[#005F9E] hover:bg-blue-50"
                   }`}
                 >
-                  <Home className="w-4 h-4" />
-                  Home
+                  <img src="/home.png" alt="setting" width={24} height={24} />
+                  <span>Home</span>
                 </Button>
               </Link>
               <Link href="/settings" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button
                   variant={activePage === "settings" ? "solid" : "ghost"}
                   size="sm"
-                  className={`w-full flex justify-center py-6  gap-3 transition-all cursor-pointer ${
+                  className={`w-full flex justify-center py-6  gap-3 transition-all font-medium cursor-pointer ${
                     activePage === "settings"
                       ? "bg-[#005F9E] hover:bg-blue-700 text-white"
                       : "text-[#005F9E] hover:bg-blue-50"
                   }`}
                 >
-                  <Settings className="w-4 h-4" />
-                  Settings
+                  <img
+                    src="/setting.png"
+                    alt="setting"
+                    width={24}
+                    height={24}
+                  />
+                  <span>Settings</span>
                 </Button>
               </Link>
             </div>
