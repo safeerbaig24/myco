@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Home, Settings, Menu, X } from "lucide-react";
-import { Button, Image, Link } from "@heroui/react";
+import { Button, Link } from "@heroui/react";
 import { useLocation } from "react-router-dom";
 
 interface NavbarProps {
