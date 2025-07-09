@@ -105,11 +105,8 @@ export default function Navbar({ currentPage }: NavbarProps) {
       <div className="lg:px-[160px] px-4 pt-8">
         <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center hover:opacity-80 transition-opacity"
-          >
-            <Image src={"/Logo.png"} alt="logo" width={153} height={80} />
+          <Link href="/" className="flex items-center w-[150px] h-[80px]">
+            <Image src={"/Logo.png"} alt="logo" />
           </Link>
 
           {/* Desktop Navigation */}
