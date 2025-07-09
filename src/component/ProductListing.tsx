@@ -219,7 +219,7 @@ export default function ProductListingPage({
                   {product.inStock && (
                     <div className="absolute inset-0 w-full flex items-end justify-center bottom-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <Button
-                        onPress={(e) => {
+                        onPress={() => {
                           navigate(`/${categoryId}/${product.id}`);
                         }}
                         className="bg-[#005F9E] text-white px-4 py-2 rounded-b-2xl w-full font-medium"
