@@ -2,12 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 import tailwindcss from "@tailwindcss/vite";
-// import { fileURLToPath } from "url";
-// import path from "path";
-
-// ✅ Resolve __dirname for ESM
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [
@@ -15,7 +9,6 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: "autoUpdate",
-      // includeAssets: ["favicon.ico", "Logo.png", "apple-touch-icon.png"],
       manifest: {
         name: "MYCO Medical Product Wheel",
         short_name: "MYCO",
@@ -47,7 +40,7 @@ export default defineConfig({
     }),
   ],
   server: {
-    allowedHosts: ["0a42f3b0347c.ngrok-free.app"],
+    allowedHosts: ["all"],
     host: true,
     port: 5173,
   },
