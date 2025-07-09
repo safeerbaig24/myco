@@ -106,9 +106,9 @@ export default function RadialProductWheel() {
   }, [screenSize, categories]);
 
   return (
-    <div className=" bg-white min-h-screen flex flex-col pt-[60px]">
+    <div className=" bg-white min-h-screen flex flex-col pt-[60px] px-6 lg:px-[160px]">
       <div
-        className="max-w-7xl mx-auto w-full rounded-[52px] py-10 md:py-[64px]"
+        className="w-full rounded-[52px] py-10 md:py-[64px]"
         style={{
           background:
             "linear-gradient(180deg, rgba(0, 95, 158, 0.2) 0%, rgba(245, 127, 38, 0.2) 100%)",
