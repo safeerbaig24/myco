@@ -205,16 +205,29 @@ export default function ProductListingPage({
               className="bg-white shadow-sm hover:shadow-lg transition-shadow duration-200 p-0 rounded-2xl"
             >
               <CardBody
-                className="p-0"
+                className="p-0 cursor-pointer group"
                 onClick={() => navigate(`/${categoryId}/${product.id}`)}
               >
-                {/* Product Image */}
-                <div className="bg-gray-50 flex justify-center">
+                {/* Image with Hover Button Overlay */}
+                <div className="relative bg-gray-50 flex justify-center items-center rounded-b-2xl w-full overflow-hidden">
                   <img
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
-                    className="object-contain"
+                    className="object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105"
                   />
+
+                  {product.inStock && (
+                    <div className="absolute inset-0 w-full flex items-end justify-center bottom-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Button
+                        onPress={(e) => {
+                          navigate(`/${categoryId}/${product.id}`);
+                        }}
+                        className="bg-[#005F9E] text-white px-4 py-2 rounded-b-2xl w-full font-medium"
+                      >
+                        View Product
+                      </Button>
+                    </div>
+                  )}
                 </div>
 
                 {/* Product Info */}
@@ -226,7 +239,7 @@ export default function ProductListingPage({
                     <Button
                       size="sm"
                       variant="ghost"
-                      className="ml-2 p-1 text-gray-400 hover:text-gray-600 flex-shrink-0"
+                      className="ml-2 p-1 text-gray-400 hover:text-gray-600 flex-shrink-0 cursor-pointer"
                     >
                       <ExternalLink className="w-5 h-5" />
                     </Button>
@@ -235,19 +248,9 @@ export default function ProductListingPage({
                   <p className="text-base text-[#005F9E] mb-2">
                     SKU: {product.sku}
                   </p>
-
                   <p className="text-sm text-[#808080] mb-6 leading-relaxed">
                     {product.description}
                   </p>
-
-                  {/* <Link href={`/${categoryId}/${product.id}`}>
-                    <Button
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 text-base"
-                      disabled={!product.inStock}
-                    >
-                      {product.inStock ? "View Product" : "Out of Stock"}
-                    </Button>
-                  </Link> */}
                 </div>
               </CardBody>
             </Card>
@@ -256,16 +259,22 @@ export default function ProductListingPage({
 
         {/* Pagination */}
         <div className="mt-16 bg-[#005F9E1A] rounded-lg p-8">
-          <div className="flex items-center justify-between max-w-[600px] mx-auto">
-            <Button
-              variant="ghost"
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 px-4 py-2"
-              onPress={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
-              disabled={currentPage === 1}
-            >
-              <ChevronLeft className="w-4 h-4" />
-              Previous
-            </Button>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-[20px] max-w-[600px] mx-auto">
+            {totalPages > 1 ? (
+              <Button
+                variant="ghost"
+                className={`flex items-center gap-2 px-4 rounded-lg py-2 ${
+                  currentPage == 1
+                    ? "bg-[#4848481A] text-[#48484880]"
+                    : "bg-[#484848] text-white"
+                }`}
+                onPress={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+                disabled={currentPage === 1}
+              >
+                <ChevronLeft className="w-4 h-4" />
+                Previous
+              </Button>
+            ) : null}
 
             <div className="flex items-center gap-2">
               {pageNumbers.map((page, index) => (
@@ -275,7 +284,7 @@ export default function ProductListingPage({
                   ) : (
                     <Button
                       variant={currentPage === page ? "solid" : "ghost"}
-                      className={`w-12 h-12 p-0 text-base ${
+                      className={`w-10 h-10 rounded-lg p-0 text-base ${
                         currentPage === page
                           ? "bg-[#005F9E] text-white"
                           : "text-white bg-[#484848]"
@@ -288,22 +297,25 @@ export default function ProductListingPage({
                 </div>
               ))}
             </div>
-
-            <Button
-              variant="ghost"
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 px-4 py-2"
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(totalPages, prev + 1))
-              }
-              disabled={currentPage === totalPages}
-            >
-              Next
-              <ChevronRight className="w-4 h-4" />
-            </Button>
-          </div>
-
-          <div className="text-center mt-6 text-base text-gray-600">
-            Showing {startItem}-{endItem} of {totalItems} products
+            {totalPages > 1 ? (
+              <Button
+                className={`flex items-center gap-2 rounded-lg px-4 py-2 ${
+                  currentPage == totalPages
+                    ? "bg-[#4848481A] text-[#48484880]"
+                    : "bg-[#484848] text-white"
+                }`}
+                onPress={() =>
+                  setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+                }
+                disabled={currentPage === totalPages}
+              >
+                Next
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            ) : null}
+            <div className="text-center text-base text-[#48484866]">
+              Showing {startItem}-{endItem} of {totalItems} products
+            </div>
           </div>
         </div>
       </div>

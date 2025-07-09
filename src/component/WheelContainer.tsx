@@ -239,7 +239,7 @@ const WheelContainer = ({
                   ((dimensions.outerRadius + dimensions.innerRadius) / 2) *
                     Math.cos((midAngle * Math.PI) / 180) -
                   (screenSize === "mobile"
-                    ? 25
+                    ? 15
                     : screenSize === "tv"
                     ? 60
                     : screenSize == "desktop"
@@ -250,14 +250,14 @@ const WheelContainer = ({
                   ((dimensions.outerRadius + dimensions.innerRadius) / 2) *
                     Math.sin((midAngle * Math.PI) / 180) -
                   (screenSize === "mobile"
-                    ? 25
+                    ? 20
                     : screenSize === "tv"
                     ? 60
                     : 40),
                 width:
-                  screenSize === "mobile" ? 50 : screenSize === "tv" ? 120 : 80,
+                  screenSize === "mobile" ? 35 : screenSize === "tv" ? 120 : 80,
                 height:
-                  screenSize === "mobile" ? 50 : screenSize === "tv" ? 120 : 80,
+                  screenSize === "mobile" ? 35 : screenSize === "tv" ? 120 : 80,
                 transform: `rotate(${-rotation}deg)`,
                 transformOrigin: "center center",
               }}

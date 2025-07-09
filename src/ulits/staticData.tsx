@@ -99,6 +99,24 @@ export const productData: Record<string, Product[]> = {
       inStock: true,
     },
     {
+      id: "syr-001",
+      name: "Precision Syringe Pro 10ml",
+      sku: "SYR-PRO-10",
+      description:
+        "High-precision 10mL syringe with ergonomic design for accurate dosing",
+      image: "/product.png",
+      inStock: true,
+    },
+    {
+      id: "syr-001",
+      name: "Precision Syringe Pro 10ml",
+      sku: "SYR-PRO-10",
+      description:
+        "High-precision 10mL syringe with ergonomic design for accurate dosing",
+      image: "/product.png",
+      inStock: true,
+    },
+    {
       id: "syr-002",
       name: "Insulin Syringe Ultra",
       sku: "SYR-INS-30",
@@ -508,9 +526,9 @@ export const getDimensions = (screenSize: string) => {
   switch (screenSize) {
     case "mobile":
       return {
-        size: 380,
+        size: 300,
         centerSize: 100,
-        outerRadius: 180,
+        outerRadius: 150,
         innerRadius: 50,
       };
     case "tablet":
