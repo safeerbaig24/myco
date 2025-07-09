@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
-import { Eye, EyeOff } from "lucide-react";
+import {
+  ArrowBigDown,
+  ArrowDown,
+  ArrowDown01Icon,
+  ArrowDownAZ,
+  ArrowDownIcon,
+  Eye,
+  EyeOff,
+} from "lucide-react";
 import { Card, CardBody } from "@heroui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -141,10 +149,10 @@ export default function SettingsPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Page Header */}
         <div className="mb-8 sm:mb-12">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-[28px] sm:text-4xl font-bold text-[#005F9E] mb-4">
             Settings
           </h1>
-          <p className="text-base sm:text-lg text-blue-600">
+          <p className="text-base sm:text-lg text-[#005F9E]">
             Manage product categories and their visibility on the category
             wheel.
           </p>
@@ -154,8 +162,8 @@ export default function SettingsPage() {
         <Card className="bg-white shadow-sm">
           <CardBody className="p-0">
             {/* Section Header */}
-            <div className="bg-blue-50 px-6 py-4 border-b">
-              <h2 className="text-xl font-semibold text-blue-800">
+            <div className="bg-[#005F9E1A] px-6 py-5 border-b">
+              <h2 className="text-[22px] font-medium text-[#005F9E]">
                 Existing Categories
               </h2>
             </div>
@@ -167,39 +175,47 @@ export default function SettingsPage() {
                   key={category.id}
                   className="px-6 py-6 flex items-center justify-between hover:bg-gray-50 transition-colors"
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
                     {/* Category Icon */}
                     <div
                       className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg"
-                      style={{ backgroundColor: category.color }}
+                      style={{ backgroundColor: "#005F9E" }}
                     >
                       {category?.name?.slice(0, 1)}
                     </div>
 
                     {/* Category Info */}
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                      <h3 className="text-lg font-medium text-[#005F9E]">
                         {category?.name}
                       </h3>
+                      <p className="text-sm text-[#48484880]">
+                        High-precision syringes for medical applications
+                      </p>
                     </div>
                   </div>
 
                   {/* Visibility Toggle */}
-                  <button
-                    onClick={() => toggleCategory(category.id)}
-                    className={`p-2 rounded-lg transition-colors ${
-                      category.enabled
-                        ? "text-green-600 hover:bg-green-50"
-                        : "text-gray-400 hover:bg-gray-100"
-                    }`}
-                    title={category.enabled ? "Hide category" : "Show category"}
-                  >
-                    {category.enabled ? (
-                      <Eye className="w-6 h-6" />
-                    ) : (
-                      <EyeOff className="w-6 h-6" />
-                    )}
-                  </button>
+                  <div className="flex items-center gap-[26px]">
+                    <button
+                      onClick={() => toggleCategory(category.id)}
+                      className={`p-2 rounded-lg transition-colors ${
+                        category.enabled
+                          ? "text-green-600 hover:bg-green-50"
+                          : "text-gray-400 hover:bg-gray-100"
+                      }`}
+                      title={
+                        category.enabled ? "Hide category" : "Show category"
+                      }
+                    >
+                      {category.enabled ? (
+                        <Eye className="w-6 h-6" />
+                      ) : (
+                        <EyeOff className="w-6 h-6" />
+                      )}
+                    </button>
+                    <img src="/down.png" width={15} height={15} />
+                  </div>
                 </div>
               ))}
             </div>

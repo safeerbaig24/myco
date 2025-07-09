@@ -40,7 +40,7 @@ export default defineConfig({
     }),
   ],
   server: {
-    allowedHosts: ["90da8e9dfd5f.ngrok-free.app"],
+    allowedHosts: ["317c8998ef9c.ngrok-free.app"],
     host: true,
     port: 5173,
   },
