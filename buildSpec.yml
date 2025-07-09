@@ -1,0 +1,14 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - 'npm install'
+        - 'npm run build'  # Adjust the build command as needed for your framework
+  artifacts:
+    baseDirectory: 'build'  # Output directory for the build artifacts
+    files:
+      - '**/*'  # Include all files in the build directory
+  cache:
+    paths:
+      - node_modules/**/*  # Cache dependencies for faster builds
