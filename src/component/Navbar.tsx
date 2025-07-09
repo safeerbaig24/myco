@@ -101,7 +101,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
   const buttonSize = getButtonSize();
 
   return (
-    <nav className={`bg-white sticky top-0 z-50`}>
+    <nav className={`bg-white`}>
       <div className="lg:px-[160px] px-4 pt-8">
         <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
           {/* Logo */}
@@ -118,7 +118,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
               <Button
                 variant={activePage === "home" ? "solid" : "ghost"}
                 size={buttonSize}
-                className={`flex items-center w-full justify-between gap-2 transition-all ${
+                className={`flex items-center w-full justify-between gap-2 transition-all cursor-pointer ${
                   activePage === "home"
                     ? "bg-[#005F9E] text-white rounded-lg font-medium"
                     : "bg-transparent text-[#005F9E] border-blue-200"
@@ -134,7 +134,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
               <Button
                 variant={activePage === "settings" ? "solid" : "ghost"}
                 size={buttonSize}
-                className={`flex items-center gap-2 transition-all ${
+                className={`flex items-center gap-2 transition-all cursor-pointer ${
                   activePage === "settings"
                     ? "bg-[#005F9E] text-white rounded-lg font-medium"
                     : "bg-transparent text-[#005F9E] border-blue-200"
@@ -177,7 +177,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button
                   variant={activePage === "home" ? "solid" : "ghost"}
-                  className={`w-full flex justify-center py-6 gap-3 transition-all ${
+                  className={`w-full flex justify-center py-6 gap-3 transition-all cursor-pointer ${
                     activePage === "home"
                       ? "bg-[#005F9E] hover:bg-blue-700 text-white"
                       : "text-[#005F9E] hover:bg-blue-50"
@@ -191,7 +191,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                 <Button
                   variant={activePage === "settings" ? "solid" : "ghost"}
                   size="sm"
-                  className={`w-full flex justify-center py-6  gap-3 transition-all ${
+                  className={`w-full flex justify-center py-6  gap-3 transition-all cursor-pointer ${
                     activePage === "settings"
                       ? "bg-[#005F9E] hover:bg-blue-700 text-white"
                       : "text-[#005F9E] hover:bg-blue-50"
